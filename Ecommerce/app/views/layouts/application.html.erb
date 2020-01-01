@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TESTE</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+    
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">HOME</a>
+
+        </li>
+
+  <% if current_user %>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/cates" >Category</a>
+
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/products">Products</a>
+
+        </li>
+  <% end %>
+      </ul>
+    
+    
+  </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+   <p class="navbar-text float-right">
+<% if current_user %>
+
+   Logged Admin :  <strong><%= current_user.email %></strong>
+
+  <%= link_to "Logout", logout_path, :class => 'navbar-link'  %>
+ 
+<% else %>
+  <%= link_to "Login", login_path, :class => 'navbar-link'  %>
+<% end %>
+</p>   
+
+</nav>
+   <div class="container">
+          <%= flash_messages %>
+
+  <%= yield %>
+</div>
+  </body>
+</html>
+

@@ -1,0 +1,33 @@
+<%= form_with(model: cate, local: true) do |form| %>
+  <% if cate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cate.errors.count, "error") %> prohibited this cate from being saved:</h2>
+
+      <ul>
+      <% cate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<br>
+
+
+<table>
+  
+  <tr>
+    <td><%= form.label :category_name %></td>
+     <td> <%= form.text_field :productname %></td>
+   </tr>
+
+  <tr>
+    <td> <%= form.submit %></td>
+  </tr>
+  
+
+</table>
+    
+
+ 
+<% end %>
